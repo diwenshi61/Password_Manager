@@ -1,6 +1,7 @@
 # Password Manager
 A basic password manager utility that allows a user to encrypt passwords under a master password that is used to decrypt them later.
 
+Version 2.0 is tested and verified with python 2.7 and 3.0 with 3.8.
 
 ## Usage steps
 The user initially creates a file containing their passwords named "passwords.txt" (The name of the files the program uses can be changed by modifying the code).
@@ -59,8 +60,6 @@ Side channel attacks on the decryption phase can additionally reveal information
 
 
 ## Compatibility
-Written and tested for python 2.7 on Windows.
-
-Needs minor changes for python 3 (e.g. replace uses of raw_input).
+Written and tested for python 2.7 and python 3.8 on Windows.
 
 May have compatibility issues on other platforms.
