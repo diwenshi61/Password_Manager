@@ -3,6 +3,8 @@ A basic password manager utility that allows a user to encrypt passwords under a
 
 Version 2.0 is tested and verified with python 2.7 and 3.0 with 3.8.
 
+Requires pyperclip (v3.0).
+
 ## Usage steps
 The user initially creates a file containing their passwords named "passwords.txt" (The name of the files the program uses can be changed by modifying the code).
 

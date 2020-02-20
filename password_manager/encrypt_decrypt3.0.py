@@ -133,11 +133,22 @@ def decrypt():
                     break
         pwds += [pwd]
     f.close()
-    file = open("passwords.txt","w")
-    file.write(str(words))
-    for pwd in pwds:
-        file.write("\n" + pwd)
-    file.close()
+    for word in words:
+        print(word)
+    choice = True
+    while choice:
+        choice = input("Type the password to copy, or leave blank to write passwords.txt\n")
+        import pyperclip
+        try:
+            pyperclip.copy(pwds[words.index(choice)])
+        except ValueError:
+            print("Invalid input!")
+    else:
+        file = open("passwords.txt","w")
+        file.write(str(words))
+        for pwd in pwds:
+            file.write("\n" + pwd)
+        file.close()
 
 if __name__ == "__main__":
     while True:
