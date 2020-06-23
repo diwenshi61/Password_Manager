@@ -138,11 +138,12 @@ def decrypt():
     choice = True
     while choice:
         choice = input("Type the password to copy, or leave blank to write passwords.txt\n")
-        import pyperclip
-        try:
-            pyperclip.copy(pwds[words.index(choice)])
-        except ValueError:
-            print("Invalid input!")
+        if choice:
+            import pyperclip
+            try:
+                pyperclip.copy(pwds[words.index(choice)])
+            except ValueError:
+                print("Invalid input!")
     else:
         file = open("passwords.txt","w")
         file.write(str(words))
