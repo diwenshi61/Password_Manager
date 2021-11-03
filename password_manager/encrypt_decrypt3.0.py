@@ -6,6 +6,19 @@ import getpass
 import destroy
 import sys
 
+import hmac, base64, struct, hashlib, time
+
+def get_hotp_token(secret, intervals_no):
+    key = base64.b32decode(secret, True)
+    msg = struct.pack(">Q", intervals_no)
+    h = hmac.new(key, msg, hashlib.sha1).digest()
+    o = h[19] & 15
+    h = (struct.unpack(">I", h[o:o+4])[0] & 0x7fffffff) % 1000000
+    return h
+
+def get_totp_token(secret):
+    return get_hotp_token(secret, intervals_no=int(time.time())//30)
+
 def encrypt():
     print ("")
     print ("passwords.txt example")
@@ -141,9 +154,12 @@ def decrypt():
         if choice:
             import pyperclip
             try:
-                pyperclip.copy(pwds[words.index(choice)])
-            except ValueError:
-                print("Invalid input!")
+                pyperclip.copy(get_totp_token(pwds[words.index(choice)]))
+            except:
+                try:
+                    pyperclip.copy(pwds[words.index(choice)])
+                except ValueError:
+                    print("Invalid input!")
     else:
         file = open("passwords.txt","w")
         file.write(str(words))

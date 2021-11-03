@@ -18,6 +18,14 @@ A encrypted file called "encrypted.txt" is created and the "passwords.txt" file 
 
 To decrypt the file, the master password is required, and a "passwords.txt" file is regenerated from the encrypted file.
 
+Using the decrypt option, passwords can be directly copied to the clipboard.
+
+In encrypt_decrypt3.0.py, if a password is a TOTP compatible key, the generated one-time passcode will be copied instead.
+
+The secret key cannot be copied but can be obtained by writing to "passwords.txt".
+
+This feature is not found in encrypt_decrypt2.0.py.
+
 
 ## "Known Answer Tests" (KATs) a.k.a. test vectors
 There are five KATs in the repo.
